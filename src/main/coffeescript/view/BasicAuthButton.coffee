@@ -15,6 +15,7 @@ class BasicAuthButton extends Backbone.View
     username = $(".input_username").val()
     password = $(".input_password").val()
     window.authorizations.add(@model.type, new PasswordAuthorization("basic", username, password))
+    console.error('Using global variable!')
     window.swaggerUi.load()
     elem = $('#basic_auth_container').hide()
 

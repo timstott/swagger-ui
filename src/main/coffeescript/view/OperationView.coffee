@@ -161,7 +161,11 @@ class OperationView extends Backbone.View
 
   addStatusCode: (statusCode) ->
     # Render status codes
-    statusCodeView = new StatusCodeView({model: statusCode, tagName: 'tr'})
+    statusCodeView = new StatusCodeView({
+      model: statusCode,
+      tagName: 'tr',
+      swaggerContext: @options.swaggerContext
+    })
     $('.operation-status', $(@el)).append statusCodeView.render().el
 
   submitOperation: (e) ->

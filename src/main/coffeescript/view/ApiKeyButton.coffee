@@ -13,6 +13,7 @@ class ApiKeyButton extends Backbone.View
 
   applyApiKey: ->
     window.authorizations.add(@model.name, new ApiKeyAuthorization(@model.name, $("#input_apiKey_entry").val(), @model.in))
+    console.error('Using global variable!')
     window.swaggerUi.load()
     elem = $('#apikey_container').show()
 

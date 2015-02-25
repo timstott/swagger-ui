@@ -61,12 +61,13 @@ class MainView extends Backbone.View
     # Render a resource and add it to resources li
     resource.id = resource.id.replace(/\s/g, '_')
     resourceView = new ResourceView({
-      model: resource, 
-      tagName: 'li', 
-      id: 'resource_' + resource.id, 
-      className: 'resource', 
+      model: resource,
+      tagName: 'li',
+      id: 'resource_' + resource.id,
+      className: 'resource',
       auths: auths,
-      swaggerOptions: @options.swaggerOptions
+      swaggerOptions: @options.swaggerOptions,
+      swaggerContext: @options.swaggerContext
     })
     $('#resources').append resourceView.render().el
 

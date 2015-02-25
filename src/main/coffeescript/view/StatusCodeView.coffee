@@ -4,12 +4,13 @@ class StatusCodeView extends Backbone.View
   render: ->
     template = @template()
     $(@el).html(template(@model))
+    swaggerContext = @options.swaggerContext
 
-    if swaggerUi.api.models.hasOwnProperty @model.responseModel
+    if swaggerContext.api.models.hasOwnProperty @model.responseModel
       responseModel =
-        sampleJSON: JSON.stringify(swaggerUi.api.models[@model.responseModel].createJSONSample(), null, 2)
+        sampleJSON: JSON.stringify(swaggerContext.api.models[@model.responseModel].createJSONSample(), null, 2)
         isParam: false
-        signature: swaggerUi.api.models[@model.responseModel].getMockSignature()
+        signature: swaggerContext.api.models[@model.responseModel].getMockSignature()
 
       responseModelView = new SignatureView({model: responseModel, tagName: 'div'})
       $('.model-signature', @$el).append responseModelView.render().el
